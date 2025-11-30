@@ -44,4 +44,4 @@ spring:
 
 jwt:
   secret: ${JWT_SECRET}
-  expiration: ${JWT_EXPIRATIONs}
+  expiration: ${JWT_EXPIRATION}
