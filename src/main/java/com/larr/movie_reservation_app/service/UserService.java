@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
   private final UserRepository repo;
 
-  private final BCryptPasswordEncoder encoder;
+  private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
   public User savUser(User user) {
     String hashedPassword = encoder.encode(user.getPassword());
