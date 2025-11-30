@@ -24,7 +24,7 @@ public class JwtUtils {
   @Value("${jwt.secret}")
   private String jwtSecret;
 
-  @Value("{${jwt.expiration}}")
+  @Value("${jwt.expiration}")
   private int jwtExp;
 
   // create a secret key for signing/verifying jwts
