@@ -57,6 +57,10 @@ public class UserService {
         .orElseThrow(() -> new UserNotFoundException("User with email:" + email + " not found"));
   }
 
+  public boolean userExistsByEmail(String email) {
+    return repo.findByEmail(email).isPresent();
+  }
+
   public User finUserById(String id) {
     return repo.findById(id).orElseThrow(() -> new UserNotFoundException("User with id:" + id + " not found"));
   }
