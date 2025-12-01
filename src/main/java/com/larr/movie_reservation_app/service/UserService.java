@@ -72,6 +72,12 @@ public class UserService {
     repo.delete(user);
   }
 
+  public boolean passwordMatches(String password, String id) {
+    User user = finUserById(id);
+
+    return encoder.matches(password, user.getPassword());
+  }
+
   public List<User> findAllUsers() {
     return repo.findAll();
   }
