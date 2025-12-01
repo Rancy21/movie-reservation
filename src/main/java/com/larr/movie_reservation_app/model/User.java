@@ -23,7 +23,7 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
     @Column(name = "is_active")
-    private boolean isActive;
+    private boolean isActive = true;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role;
