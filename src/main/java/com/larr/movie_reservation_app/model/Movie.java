@@ -23,4 +23,6 @@ public class Movie {
     private String description;
     @Column(name = "poster_url")
     private String posterUrl;
+    @Column(name = "is_active")
+    private boolean isActive;
 }
