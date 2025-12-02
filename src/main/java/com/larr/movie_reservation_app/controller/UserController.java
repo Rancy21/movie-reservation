@@ -3,6 +3,9 @@ package com.larr.movie_reservation_app.controller;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.function.Function;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseCookie;
@@ -11,7 +14,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,35 +65,45 @@ public class UserController {
 
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<?> getUserinfo(@PathVariable String id) {
-        return ResponseEntity.ok(mapper.toUserResponse(service.finUserById(id)));
+    @GetMapping("/users")
+    public ResponseEntity<?> getUserinfo() {
+        return findUserIdAndProceed(id -> ResponseEntity.ok(mapper.toUserResponse(service.finUserById(id))));
     }
 
-    @PatchMapping("/users/{id}/name")
-    public ResponseEntity<?> updateUserName(@PathVariable String id, @RequestBody UserRequest request) {
-        return ResponseEntity.ok(mapper.toUserResponse(service.updateUserName(id, request.getName())));
+    @PatchMapping("/users/name")
+    public ResponseEntity<?> updateUserNames(@RequestBody UserRequest request) {
+
+        return findUserIdAndProceed(id -> ResponseEntity.ok(mapper.toUserResponse(service.updateUserName(id,
+                request.getName()))));
     }
 
-    @PatchMapping("/users/{id}/phone")
-    public ResponseEntity<?> updateUserPhoneNumber(@PathVariable String id, @RequestBody UserRequest request) {
-        return ResponseEntity.ok(mapper.toUserResponse(service.updatUserPhoneNumber(id, request.getPhoneNumber())));
+    @PatchMapping("/users/phone")
+    public ResponseEntity<?> updateUserPhoneNumber(@RequestBody UserRequest request) {
+        return findUserIdAndProceed(id -> ResponseEntity
+                .ok(mapper.toUserResponse(service.updatUserPhoneNumber(id, request.getPhoneNumber()))));
     }
 
-    @PatchMapping("/users/{id}/password")
-    public ResponseEntity<?> updateUserPassword(@PathVariable String id, @RequestBody PasswordRequest request) {
-        if (service.passwordMatches(request.getOldPassword(), id)) {
-            service.updatUserPassword(id, request.getNewPassword());
-            return ResponseEntity.ok("Passwored Updated successfully");
-        }
+    @PatchMapping("/users/password")
+    public ResponseEntity<?> updateUserPassword(@RequestBody PasswordRequest request) {
+        return findUserIdAndProceed(id -> {
+            if (service.passwordMatches(request.getOldPassword(), id)) {
+                service.updatUserPassword(id, request.getNewPassword());
+                return ResponseEntity.ok("Passwored Updated successfully");
+            }
 
-        return ResponseEntity.badRequest().body("Wrong old password");
+            return ResponseEntity.badRequest().body("Wrong old password");
+        });
     }
 
     @PostMapping("/api/auth/logout")
     public ResponseEntity<?> logout() {
         ResponseCookie cookie = jwtUtils.generateCleanCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString()).body("logged out successfully");
+    }
+
+    private ResponseEntity<?> findUserIdAndProceed(Function<String, ResponseEntity<?>> action) {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return action.apply(service.getUserByEmail(userDetails.getUsername()).getId());
     }
 
 }
