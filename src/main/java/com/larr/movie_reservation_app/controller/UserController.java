@@ -88,4 +88,10 @@ public class UserController {
         return ResponseEntity.badRequest().body("Wrong old password");
     }
 
+    @PostMapping("/api/auth/logout")
+    public ResponseEntity<?> logout() {
+        ResponseCookie cookie = jwtUtils.generateCleanCookie();
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString()).body("logged out successfully");
+    }
+
 }
