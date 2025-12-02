@@ -36,7 +36,7 @@ public class UserController {
 
     @PostMapping(value = "/api/auth/register", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> registerUser(@RequestBody UserRequest request) {
-        if (service.userExistsByEmail(request.getEmail())) {
+        if (!service.userExistsByEmail(request.getEmail())) {
             User user = mapper.toUserEntity(request);
 
             return ResponseEntity.ok(mapper.toUserResponse(service.savUser(user)));
