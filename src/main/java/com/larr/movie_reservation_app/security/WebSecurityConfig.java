@@ -18,7 +18,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.larr.movie_reservation_app.security.jwt.JwtFiler;
+import com.larr.movie_reservation_app.security.jwt.JwtFilter;
 import com.larr.movie_reservation_app.security.jwt.JwtUtils;
 import com.larr.movie_reservation_app.security.service.UserDetailsServiceImpl;
 
@@ -36,8 +36,8 @@ public class WebSecurityConfig {
 
   // Define a bean for your jwt filter
   @Bean
-  public JwtFiler jwtFiler() {
-    return new JwtFiler(jwtUtils, userDetailsService);
+  public JwtFilter jwtFiler() {
+    return new JwtFilter(jwtUtils, userDetailsService);
   }
 
   // Define a password encoder for password hashing and validation
@@ -105,6 +105,8 @@ public class WebSecurityConfig {
     http.csrf(AbstractHttpConfigurer::disable)// disable CSRF as it is not needed for a stateless API
         // user custom 401 handler
         .exceptionHandling(exception -> exception.authenticationEntryPoint(authEntryPoint))
+        // user custom authenticationprovider
+        .authenticationProvider(authenticationProvider())
         .authorizeHttpRequests(auth ->
         // allow internal dispatcher types
         auth.dispatcherTypeMatchers(DispatcherType.ERROR, DispatcherType.FORWARD).permitAll()
