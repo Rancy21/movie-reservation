@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import com.larr.movie_reservation_app.dto.UserRequest;
 import com.larr.movie_reservation_app.dto.UserResponse;
-import com.larr.movie_reservation_app.model.Role;
 import com.larr.movie_reservation_app.model.User;
 
 @Service
