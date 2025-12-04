@@ -16,7 +16,6 @@ public class DtoMapper {
         user.setEmail(request.getEmail());
         user.setPassword(request.getPassword());
         user.setPhoneNumber(request.getPhoneNumber());
-        user.setRole(Role.USER);
 
         return user;
     }
