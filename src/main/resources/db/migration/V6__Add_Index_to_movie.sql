@@ -1,6 +1,6 @@
-CREATE extension if not exists pg_trgm;
-create index concurrently idx_movie_genre on movie(genre);
-create index concurrently idx_movie_title_trgm on movie using gin (title gin_trgm_ops);
-create index concurrently idx_movie_description_trgm using gin (description gin_trgm_ops);
-create index concurrently idx_movie_genre_title on movie(genre) include (title);
-create index concurrently idx_movie_genre_and_title_trgm on movie using gin (genre, title gin trgm_ops);
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE INDEX idx_movie_genre ON movie(genre);
+CREATE INDEX idx_movie_title_trgm ON movie USING gin (title gin_trgm_ops);
+CREATE INDEX idx_movie_description_trgm ON movie USING gin (description gin_trgm_ops);
+CREATE INDEX idx_movie_genre_title ON movie(genre) INCLUDE (title);
+CREATE INDEX idx_movie_genre_and_title_trgm ON movie USING gin (genre gin_trgm_ops, title gin_trgm_ops);

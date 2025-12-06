@@ -1,2 +1,2 @@
 ALTER TABLE movie
-ADD column status varchar(30) not null default "COMING_SOON";
+ADD COLUMN movie_status varchar(30) not null default 'COMING_SOON';

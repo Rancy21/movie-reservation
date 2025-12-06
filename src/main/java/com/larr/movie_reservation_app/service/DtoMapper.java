@@ -2,8 +2,10 @@ package com.larr.movie_reservation_app.service;
 
 import org.springframework.stereotype.Service;
 
+import com.larr.movie_reservation_app.dto.MovieDTO;
 import com.larr.movie_reservation_app.dto.UserRequest;
 import com.larr.movie_reservation_app.dto.UserResponse;
+import com.larr.movie_reservation_app.model.Movie;
 import com.larr.movie_reservation_app.model.User;
 
 @Service
@@ -27,6 +29,34 @@ public class DtoMapper {
         response.setEmail(user.getEmail());
         response.setPhoneNumber(user.getPhoneNumber());
         return response;
+    }
+
+    public Movie toMovieEntity(MovieDTO dto) {
+        Movie movie = new Movie();
+        movie.setTitle(dto.getTitle());
+        movie.setGenre(dto.getGenre());
+        movie.setDuration(dto.getDuration());
+        movie.setRating(dto.getRating());
+        movie.setDescription(dto.getDescription());
+        movie.setPosterUrl(dto.getPosterUrl());
+
+        return movie;
+    }
+
+    public MovieDTO toMovieDTO(Movie movie) {
+        MovieDTO dto = new MovieDTO();
+        dto.setId(movie.getId());
+        dto.setTitle(movie.getTitle());
+        dto.setGenre(movie.getGenre());
+        dto.setDuration(movie.getDuration());
+        dto.setRating(movie.getRating());
+        dto.setDescription(movie.getDescription());
+        dto.setPosterUrl(movie.getPosterUrl());
+        dto.setActive(movie.isActive());
+        dto.setStatus(movie.getStatus());
+
+        return dto;
+
     }
 
 }

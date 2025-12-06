@@ -26,8 +26,8 @@ public class Movie {
     @Column(name = "poster_url")
     private String posterUrl;
     @Column(name = "is_active")
-    private boolean isActive;
+    private boolean isActive = true;
     @Enumerated(EnumType.STRING)
-    @Column(name = "status")
+    @Column(name = "movie_status")
     private MovieStatus status = MovieStatus.COMING_SOON;
 }
