@@ -17,6 +17,5 @@ public class MovieDTO {
     private String rating;
     private String description;
     private String posterUrl;
-    private boolean isActive;
     private MovieStatus status;
 }
