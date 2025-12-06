@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.larr.movie_reservation_app.dto.MovieDTO;
 import com.larr.movie_reservation_app.model.Movie;
-import com.larr.movie_reservation_app.service.DtoMapper;
 import com.larr.movie_reservation_app.service.MovieService;
+import com.larr.movie_reservation_app.service.mapper.DtoMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
