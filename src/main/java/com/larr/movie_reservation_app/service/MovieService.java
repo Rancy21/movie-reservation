@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.larr.movie_reservation_app.dto.MovieDTO;
+import com.larr.movie_reservation_app.dto.MovieDetailDTO;
 import com.larr.movie_reservation_app.exception.MovieNotFoundException;
 import com.larr.movie_reservation_app.model.Movie;
 import com.larr.movie_reservation_app.model.MovieStatus;
@@ -45,7 +46,7 @@ public class MovieService {
         return repo.save(movie);
     }
 
-    public Page<Movie> searchMovies(String genre, String title, Pageable pageable) {
+    public Page<MovieDetailDTO> searchMovies(String genre, String title, Pageable pageable) {
         return repo.search(genre, title, pageable);
     }
 
