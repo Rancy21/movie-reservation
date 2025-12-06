@@ -23,8 +23,8 @@ import com.larr.movie_reservation_app.dto.PasswordRequest;
 import com.larr.movie_reservation_app.dto.UserRequest;
 import com.larr.movie_reservation_app.model.User;
 import com.larr.movie_reservation_app.security.jwt.JwtUtils;
-import com.larr.movie_reservation_app.service.DtoMapper;
 import com.larr.movie_reservation_app.service.UserService;
+import com.larr.movie_reservation_app.service.mapper.DtoMapper;
 
 import lombok.RequiredArgsConstructor;
 
