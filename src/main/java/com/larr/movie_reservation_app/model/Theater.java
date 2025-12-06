@@ -18,4 +18,6 @@ public class Theater {
     private String city;
     @Column(name = "total_screens")
     private int totalScreens;
+    @Column(name = "is_active")
+    private boolean isActive = true;
 }
