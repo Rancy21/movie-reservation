@@ -1,0 +1,2 @@
+ALTER TABLE theater
+add column is_active boolean not null default TRUE;
