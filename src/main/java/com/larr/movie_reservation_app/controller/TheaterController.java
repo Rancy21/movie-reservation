@@ -36,8 +36,8 @@ public class TheaterController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PostMapping("/{id}")
-    public ResponseEntity<?> saveTheater(@PathVariable String id, @RequestBody TheaterCreateRequest request) {
+    @PostMapping()
+    public ResponseEntity<?> saveTheater(@RequestBody TheaterCreateRequest request) {
         Theater theater = theaterMapper.toEntity(request);
 
         return ResponseEntity.ok(theaterMapper.toDto(service.saveTheater(theater)));
