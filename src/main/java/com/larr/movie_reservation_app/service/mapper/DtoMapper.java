@@ -1,6 +1,6 @@
 package com.larr.movie_reservation_app.service.mapper;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import com.larr.movie_reservation_app.dto.MovieDTO;
 import com.larr.movie_reservation_app.dto.UserRequest;
@@ -8,7 +8,7 @@ import com.larr.movie_reservation_app.dto.UserResponse;
 import com.larr.movie_reservation_app.model.Movie;
 import com.larr.movie_reservation_app.model.User;
 
-@Service
+@Component
 public class DtoMapper {
     public User toUserEntity(UserRequest request) {
         User user = new User();
