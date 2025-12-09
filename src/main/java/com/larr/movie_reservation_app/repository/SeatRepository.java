@@ -1,9 +1,11 @@
 package com.larr.movie_reservation_app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.larr.movie_reservation_app.model.Screen;
+import com.larr.movie_reservation_app.model.Seat;
 
-public interface SeatRepository extends JpaRepository<Screen, String> {
+@Repository
+public interface SeatRepository extends JpaRepository<Seat, String> {
 
 }
