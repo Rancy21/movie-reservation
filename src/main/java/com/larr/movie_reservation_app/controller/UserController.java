@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.larr.movie_reservation_app.dto.LoginRequest;
-import com.larr.movie_reservation_app.dto.PasswordRequest;
-import com.larr.movie_reservation_app.dto.UserRequest;
+import com.larr.movie_reservation_app.dto.user.LoginRequest;
+import com.larr.movie_reservation_app.dto.user.PasswordRequest;
+import com.larr.movie_reservation_app.dto.user.UserRequest;
 import com.larr.movie_reservation_app.model.User;
 import com.larr.movie_reservation_app.security.jwt.JwtUtils;
 import com.larr.movie_reservation_app.service.UserService;

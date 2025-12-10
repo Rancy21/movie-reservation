@@ -3,8 +3,8 @@ package com.larr.movie_reservation_app.service.mapper;
 import org.springframework.stereotype.Component;
 
 import com.larr.movie_reservation_app.dto.MovieDTO;
-import com.larr.movie_reservation_app.dto.UserRequest;
-import com.larr.movie_reservation_app.dto.UserResponse;
+import com.larr.movie_reservation_app.dto.user.UserRequest;
+import com.larr.movie_reservation_app.dto.user.UserResponse;
 import com.larr.movie_reservation_app.model.Movie;
 import com.larr.movie_reservation_app.model.User;
 
