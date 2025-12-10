@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.larr.movie_reservation_app.dto.TheaterUpdateRequest;
 import com.larr.movie_reservation_app.dto.theater.TheaterCreateRequest;
+import com.larr.movie_reservation_app.dto.theater.TheaterUpdateRequest;
 import com.larr.movie_reservation_app.model.Theater;
 import com.larr.movie_reservation_app.service.TheaterService;
 import com.larr.movie_reservation_app.service.mapper.TheaterMapper;
