@@ -1,7 +1,7 @@
 package com.larr.movie_reservation_app.service.mapper;
 
-import com.larr.movie_reservation_app.dto.TheaterCreateRequest;
-import com.larr.movie_reservation_app.dto.TheaterDTO;
+import com.larr.movie_reservation_app.dto.theater.TheaterCreateRequest;
+import com.larr.movie_reservation_app.dto.theater.TheaterDTO;
 import com.larr.movie_reservation_app.model.Theater;
 import org.springframework.stereotype.Component;
 

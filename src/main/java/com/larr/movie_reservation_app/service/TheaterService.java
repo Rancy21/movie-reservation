@@ -4,9 +4,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.larr.movie_reservation_app.dto.TheaterDTO;
-import com.larr.movie_reservation_app.dto.TheaterDetailDTO;
 import com.larr.movie_reservation_app.dto.TheaterUpdateRequest;
+import com.larr.movie_reservation_app.dto.theater.TheaterDTO;
+import com.larr.movie_reservation_app.dto.theater.TheaterDetailDTO;
 import com.larr.movie_reservation_app.exception.TheaterNotFoundException;
 import com.larr.movie_reservation_app.model.Theater;
 import com.larr.movie_reservation_app.repository.TheaterRepository;
