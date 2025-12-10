@@ -1,4 +1,4 @@
-package com.larr.movie_reservation_app.dto;
+package com.larr.movie_reservation_app.dto.user;
 
 import lombok.Getter;
 import lombok.Setter;
