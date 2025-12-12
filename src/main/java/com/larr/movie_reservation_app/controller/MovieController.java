@@ -21,17 +21,15 @@ import com.larr.movie_reservation_app.service.MovieService;
 import com.larr.movie_reservation_app.service.mapper.DtoMapper;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api/movies")
 public class MovieController {
     private final MovieService service;
     private final DtoMapper mapper;
 
-    // Search/filter movies GET /api/movies?genre=Action&title=anytitle
+    // Search/filter movies GET /api/movies?genre=Action&title=any title
     @GetMapping(value = "/search")
     public ResponseEntity<?> searchMovies(@RequestParam(required = false) String genre,
             @RequestParam(required = false) String title, @RequestParam(defaultValue = "0") int page,
@@ -56,7 +54,7 @@ public class MovieController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/{id}")
     public ResponseEntity<?> updateMovie(@PathVariable String id, @RequestBody MovieDTO dto) {
-        log.info("dto info: " + dto.toString());
+
         return ResponseEntity.ok(mapper.toMovieDTO(service.updateMovie(id, dto)));
     }
 
