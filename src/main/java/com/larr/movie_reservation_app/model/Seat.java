@@ -26,6 +26,8 @@ public class Seat {
     private String row;
     private int number;
     private double price;
+    @Column(name = "is_out_of_service")
+    private boolean isOutOfService;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 
@@ -33,5 +35,4 @@ public class Seat {
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();
     }
-
 }
