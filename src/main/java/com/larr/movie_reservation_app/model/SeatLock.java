@@ -31,7 +31,7 @@ public class SeatLock {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User lockedBy;
-    private static final int LOCK_TIMEOUT_MINUTES = 10;
+    private static final int LOCK_TIMEOUT_MINUTES = 5;
 
     @PrePersist
     protected void onCreate() {
