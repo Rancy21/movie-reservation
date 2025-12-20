@@ -17,7 +17,6 @@ public interface TheaterRepository extends JpaRepository<Theater, String> {
         @Query("select new com.larr.movie_reservation_app.dto.theater.TheaterDetailDTO(t.id, t.name, t.address, t.city, t.totalScreens) "
                         +
                         "from Theater t where t.id=:id")
-
         Optional<TheaterDetailDTO> findByIdAsDto(@Param("id") String id);
 
         @Query("select new com.larr.movie_reservation_app.dto.theater.TheaterDTO(t.id, t.name, t.city)"
@@ -27,6 +26,4 @@ public interface TheaterRepository extends JpaRepository<Theater, String> {
 
         @Query("select new com.larr.movie_reservation_app.dto.theater.TheaterDTO(t.id, t.name, t.city) from Theater t")
         Page<TheaterDTO> listAll(Pageable pageable);
-
-        // Optional<Theater> findByNameWhereIsActiveTrue(String name);
 }
