@@ -22,17 +22,19 @@ public class SeatLockService {
     private final SeatLockRepository repository;
     private final SeatService seatService;
     private final MovieScheduleService scheduleService;
+    private final UserService userService;
 
     public boolean isSeatLocked(String seatId, String scheduleId) {
         return repository.findSeatLock(seatId, scheduleId).isPresent();
     }
 
-    public SeatLock lockSeat(String seatId, String scheduleId, User user) {
+    public SeatLock lockSeat(String seatId, String scheduleId, String email) {
         if (isSeatLocked(seatId, scheduleId)) {
             throw new LockedSeatException("This seat is already locked");
         }
+        User user = userService.getUserByEmail(email);
         SeatLock lock = new SeatLock();
-        Seat seat = seatService.findSeatById(scheduleId);
+        Seat seat = seatService.findSeatById(seatId);
         MovieSchedule schedule = scheduleService.findScheduleById(scheduleId);
 
         lock.setSeat(seat);
