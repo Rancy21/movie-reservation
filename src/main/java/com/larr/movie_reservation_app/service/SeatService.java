@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.larr.movie_reservation_app.dto.seat.SeatAvailabilityDTO;
 import com.larr.movie_reservation_app.dto.seat.SeatDTO;
 import com.larr.movie_reservation_app.exception.SeatNotFoundException;
 import com.larr.movie_reservation_app.model.Screen;
@@ -66,6 +67,10 @@ public class SeatService {
 
     public List<SeatDTO> findSeatsByScreen(String screenId) {
         return repository.findSeatsByScreen(screenId);
+    }
+
+    public List<SeatAvailabilityDTO> finSeatAvailableSeats(String scheduleId) {
+        return repository.findAvailableSeats(scheduleId);
     }
 
 }
