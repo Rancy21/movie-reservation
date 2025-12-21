@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.larr.movie_reservation_app.dto.seat.SeatAvailabilityDTO;
 import com.larr.movie_reservation_app.dto.seat.SeatDTO;
 import com.larr.movie_reservation_app.model.Seat;
 
@@ -20,4 +21,7 @@ public interface SeatRepository extends JpaRepository<Seat, String> {
                 and s.isOutOfService = false
             """)
     List<SeatDTO> findSeatsByScreen(String screenId);
+
+    @Query(value = "SELECT * FROM available_seats_for_schedule(?1)", nativeQuery = true)
+    List<SeatAvailabilityDTO> findAvailableSeats(String scheduleId);
 }
