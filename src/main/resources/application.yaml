@@ -47,3 +47,10 @@ spring:
 jwt:
   secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION}
+
+flutterwave:
+  base-url: ${FLW_BASE_URL:https://developersandbox-api.flutterwave.com}
+  client-id: ${FLW_CLIENT_ID}
+  client-secret: ${FLW_CLIENT_SECRET}
+  encryption-key: ${FLW_ENCRYPTION_KEY}
+  webhook-secret: ${FLW_WEBHOOK_SECRET}
