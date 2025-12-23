@@ -1,6 +1,8 @@
 package com.larr.movie_reservation_app.model;
 
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,8 +18,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 
-@Data
+@Getter
+@Setter
+@Builder
 @Entity
 public class Ticket {
     @Id
@@ -41,5 +46,10 @@ public class Ticket {
 
     public Theater getTheater() {
         return schedule.getScreen().getTheater();
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.bookingTime = LocalDateTime.now();
     }
 }
