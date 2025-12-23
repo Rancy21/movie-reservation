@@ -27,4 +27,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private Role role = Role.USER;
+    @Column(name = "customer_id")
+    private String customerId;
 }
